@@ -33,6 +33,9 @@ public class NumberDisplay
         limite = ValorLimite;
     }
     
+    /**
+     * Un método setter que fija el valor actual del display al valor pasado como parámetro.
+     */
     public void setValue(int nuevoValor)
     {
         if ((nuevoValor >= 0) && (nuevoValor < limite))
