@@ -68,4 +68,16 @@ public class NumberDisplay
     {
         return valor;
     }
+    
+    /**
+     * Un método que incrementa en 1 al display y lo hace volver al principio si alcanza el límite. 
+     */
+    public void increment()
+    {
+        valor = valor + 1;
+        if (valor == limite)
+        {
+            valor = 0;
+        }
+    }
 }
