@@ -32,4 +32,16 @@ public class NumberDisplay
         valor = 0;
         limite = ValorLimite;
     }
+    
+    public void setValue(int nuevoValor)
+    {
+        if ((nuevoValor >= 0) && (nuevoValor < limite))
+        {
+            valor = nuevoValor;
+        }
+        else 
+        {
+            System.out.print("El valor no está permitido");
+        }
+    }
 }
