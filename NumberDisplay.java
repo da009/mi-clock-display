@@ -47,4 +47,17 @@ public class NumberDisplay
             System.out.print("El valor no está permitido");
         }
     }
+    
+    /**
+     * Un método que devuelve el valor actual del display en forma de cadena de 2 caracteres.
+     */
+    public String getDisplayValue()
+    {
+        String valorDisplay = "" + valor;
+        if (valor < 10)
+        {
+            valorDisplay = "0" + valor;
+        }
+        return valorDisplay;
+    }
 }
