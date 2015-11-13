@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=ValorLimite
+comment0.target=NumberDisplay(int)
+comment0.text=\r\n\ Un\ constructor\ que\ recibe\ por\ par\u00E1metro\ el\ l\u00EDmite\ del\ display\ y\ que\ fija\ el\ valor\ actual\r\n\ del\ display\ a\ 0.\r\n
+numComments=1
