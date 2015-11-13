@@ -60,4 +60,12 @@ public class NumberDisplay
         }
         return valorDisplay;
     }
+    
+    /**
+     * Un método que devuelve el valor actual del display como entero.
+     */
+    public int getValue()
+    {
+        return valor;
+    }
 }
