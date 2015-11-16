@@ -26,16 +26,29 @@ public class ClockDisplay
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
+        horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
     
     /**
      * Horas y minutos a los que fijar la hora actual
      */
-    public ClockDisplay (int horaac, int minutoac)
+    public ClockDisplay (int horaAct, int minutoAct)
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
-        horas.setValue(horaac);
-        minutos.setValue(minutoac);
+        horas.setValue(horaAct);
+        minutos.setValue(minutoAct);
+        horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+    }
+    
+    /**
+     * Tener un método setTime que acepte dos parámetros de tipo int, que representan horas y
+     * minutos, y que fije dichos valores como el tiempo actual del reloj
+     */
+    public void setTime(int horaAct, int minutoAct)
+    {
+        horas.setValue(horaAct);
+        minutos.setValue(minutoAct);
+        horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
 }
