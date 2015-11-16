@@ -7,7 +7,7 @@
  * 4.- Tener un método setTime que acepte dos parámetros de tipo int, que representan horas y minutos,
  * y que fije dichos valores como el tiempo actual del reloj.
  * 5.- Tener un método getTime que devuelva la hora como String de 5 caracteres.
- * 6.- Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea 
+ * 6.- Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea
  * originalmente).
  */
 public class ClockDisplay
@@ -18,6 +18,8 @@ public class ClockDisplay
     private NumberDisplay minutos;
     // Atributo para la hora actual
     private String horaac;
+    // Atributo para el minuto actual
+    private String minutoac;
     
     /**
      * Fija horas y minutos a 0
@@ -58,5 +60,19 @@ public class ClockDisplay
     public String getTime()
     {
         return horaac;
+    }
+    
+    /**
+     * Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea 
+     * originalmente)
+     */
+        public void timeTick()
+    {
+        minutos.increment();
+        if (minutos.getValue() == 0)
+        {
+            horas.increment();
+        }
+        horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
 }
