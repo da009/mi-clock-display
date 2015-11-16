@@ -63,7 +63,7 @@ public class ClockDisplay
     }
     
     /**
-     * Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea 
+     * Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea
      * originalmente)
      */
         public void timeTick()
