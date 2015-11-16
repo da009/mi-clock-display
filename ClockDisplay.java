@@ -51,4 +51,12 @@ public class ClockDisplay
         minutos.setValue(minutoAct);
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
+    
+    /**
+     * Tener un método getTime que devuelva la hora como String de 5 caracteres
+     */
+    public String getTime()
+    {
+        return horaac;
+    }
 }
