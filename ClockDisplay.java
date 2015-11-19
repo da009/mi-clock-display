@@ -102,4 +102,19 @@ public class ClockDisplay
         }
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
+    
+    /**
+     * Permite alternar entre formato de 12 horas y de 24
+     */
+    public void formato(boolean formatohora)
+    {
+        if (formatohora == false)
+        {
+            formhora = false;
+        }
+        else
+        {
+            formhora = true;
+        }
+    }
 }
