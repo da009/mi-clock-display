@@ -18,8 +18,6 @@ public class ClockDisplay
     private NumberDisplay minutos;
     // Atributo para la hora actual
     private String horaac;
-    // Atributo para el minuto actual
-    private String minutoac;
     
     /**
      * Fija horas y minutos a 0
@@ -59,14 +57,32 @@ public class ClockDisplay
      */
     public String getTime()
     {
-        return horaac;
+        int horaac = horas.getValue();
+        String suffix;
+        if (horaac < 12)
+        {
+            suffix = "am";
+            if (horaac == 0)
+            {
+                horaac = 12;
+            }
+        }
+        else
+        {
+            suffix = "pm";
+            if (horaac > 12)
+            {
+                horaac -= 12;
+            }
+        }
+        return horaac + ":" + minutos.getDisplayValue() + suffix;
     }
     
     /**
      * Tener un método timeTick que haga avanzar un minuto la hora actual (sea esta la que sea
      * originalmente)
      */
-        public void timeTick()
+    public void timeTick()
     {
         minutos.increment();
         if (minutos.getValue() == 0)
