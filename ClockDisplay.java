@@ -18,26 +18,30 @@ public class ClockDisplay
     private NumberDisplay minutos;
     // Atributo para la hora actual
     private String horaac;
+    // Parametro para el reloj de 24 horas
+    private boolean formhora;
     
     /**
      * Fija horas y minutos a 0
      */
-    public ClockDisplay()
+    public ClockDisplay(boolean formh)
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
+        formhora = formh;
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
     
     /**
      * Horas y minutos a los que fijar la hora actual
      */
-    public ClockDisplay (int horaAct, int minutoAct)
+    public ClockDisplay (int horaAct, int minutoAct, boolean formh)
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
         horas.setValue(horaAct);
         minutos.setValue(minutoAct);
+        formhora = formh;
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
     }
     
@@ -56,7 +60,9 @@ public class ClockDisplay
      * Tener un método getTime que devuelva la hora como String de 5 caracteres
      */
     public String getTime()
-    {
+    {    
+        if (formhora == false)
+        {
         int horaac = horas.getValue();
         String suffix;
         if (horaac < 12)
@@ -75,7 +81,12 @@ public class ClockDisplay
                 horaac -= 12;
             }
         }
-        return horaac + ":" + minutos.getDisplayValue() + suffix;
+            return horaac + ":" + minutos.getDisplayValue() + suffix;
+        }
+        else
+        {
+            return horaac;
+        }
     }
     
     /**
