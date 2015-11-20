@@ -12,14 +12,22 @@
  */
 public class ClockDisplay
 {
-    // Atributo horas
+    // Atributo horas.
     private NumberDisplay horas;
-    // Atributo minutos
+    // Atributo minutos.
     private NumberDisplay minutos;
-    // Atributo para la hora actual
+    // Atributo para la hora actual.
     private String horaac;
-    // Parametro para el reloj de 24 horas
+    // Atributo para el reloj de 24 horas.
     private boolean formhora;
+    // Atributo para el año.
+    private NumberDisplay ano;
+    // Atributo para el mes(30 dias).
+    private NumberDisplay mes;
+    // Atributo para el dia.
+    private NumberDisplay dia;
+    // Atributo para la fecha(día/mes/año).
+    private String fecha;
     
     /**
      * Fija horas y minutos a 0
@@ -28,41 +36,88 @@ public class ClockDisplay
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
+        dia = new NumberDisplay(31);
+        mes = new NumberDisplay(13);
+        ano = new NumberDisplay(99);
+        dia.setValue(20);
+        mes.setValue(11);
+        ano.setValue(15);
         formhora = formh;
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        if (dia.getValue() == 0)
+        {
+            dia.increment();
+        }
+        if (mes.getValue() == 0)
+        {
+            mes.increment();
+        }
+        fecha = dia.getDisplayValue() + "/" + mes.getDisplayValue() + "/" + ano.getDisplayValue();
     }
     
     /**
      * Horas y minutos a los que fijar la hora actual
      */
-    public ClockDisplay (int horaAct, int minutoAct, boolean formh)
+    public ClockDisplay (int horaAct, int minutoAct,int diaAct, int mesAct, int anoAct , boolean formh)
     {
         horas = new NumberDisplay(24);
         minutos = new NumberDisplay(60);
         horas.setValue(horaAct);
         minutos.setValue(minutoAct);
+        dia = new NumberDisplay(31);
+        mes = new NumberDisplay(13);
+        ano = new NumberDisplay(99);
+        dia.setValue(diaAct);
+        mes.setValue(mesAct);
+        ano.setValue(anoAct);
         formhora = formh;
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        if (dia.getValue() == 0)
+        {
+            dia.increment();
+        }
+        if (mes.getValue() == 0)
+        {
+            mes.increment();
+        }
+        fecha = dia.getDisplayValue() + "/" + mes.getDisplayValue() + "/" + ano.getDisplayValue();
     }
     
     /**
      * Tener un método setTime que acepte dos parámetros de tipo int, que representan horas y
      * minutos, y que fije dichos valores como el tiempo actual del reloj
      */
-    public void setTime(int horaAct, int minutoAct)
+    public void setTime(int horaAct, int minutoAct, int diaAct, int mesAct, int anoAct)
     {
         horas.setValue(horaAct);
         minutos.setValue(minutoAct);
+        dia.setValue(diaAct);
+        mes.setValue(mesAct);
+        ano.setValue(anoAct);
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        fecha = dia.getDisplayValue() + "/" + mes.getDisplayValue() + "/" + ano.getDisplayValue();
+        if (dia.getValue() == 0)
+        {
+            dia.increment();
+        }
+        if (mes.getValue() == 0)
+        {
+            mes.increment();
+        }
     }
     
     /**
      * Tener un método getTime que devuelva la hora como String de 5 caracteres
      */
     public String getTime()
-    {    
-        if (formhora == false)
+    {
+        String fecha = dia.getValue() + "/" + mes.getValue() + "/" + ano.getValue();
+        if (formhora == false) // Formato de 12 horas.
         {
+            if (dia.getValue() == 0)
+        {
+            dia.increment();
+        }
         int horaac = horas.getValue();
         String suffix;
         if (horaac < 12)
@@ -81,11 +136,19 @@ public class ClockDisplay
                 horaac -= 12;
             }
         }
-            return horaac + ":" + minutos.getDisplayValue() + suffix;
-        }
-        else
+        if (dia.getValue() == 0)
         {
-            return horaac;
+            dia.increment();
+        }
+        if (mes.getValue() == 0)
+        {
+            mes.increment();
+        }
+        return horaac + ":" + minutos.getDisplayValue() + suffix + " - " + fecha;
+        }
+        else // Formato de 24 horas.
+        {
+            return horaac + " - " + fecha;
         }
     }
     
@@ -100,7 +163,32 @@ public class ClockDisplay
         {
             horas.increment();
         }
+        
+        if (horas.getValue() == 0)
+        {
+            dia.increment();
+            if (dia.getValue() == 0)
+            {
+                dia.increment();
+            }
+            
+            if (dia.getValue() == 1)
+            {
+                mes.increment();
+            }
+            
+            if (mes.getValue() == 0)
+            {
+                mes.increment();
+            }
+        
+            if (mes.getValue() == 1)
+            {
+                ano.increment();
+            }
+        }
         horaac = horas.getDisplayValue() + ":" + minutos.getDisplayValue();
+        fecha = dia.getValue() + "/" + mes.getValue() + "/" + ano.getValue();
     }
     
     /**
